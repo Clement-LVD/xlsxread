@@ -24,13 +24,13 @@ knitr::opts_chunk$set(
 
 `xlsxread::` is an R package. The goal of `xlsxread::` is to import an Excel .xlsx sheet within the R environnement with `xlsxread::readxlsx()`.
 
-> - 🌍 Read file from an URL or a file path 🌍
-> - 🚀 Maximal performance for read a sheet 🚀
+> - 🌍 Read .xlsx file from an URL or a file path 🌍
+> - 🚀 Maximal performance for quick reading 🚀
 > - ℛ `base::` R with no dependencies ℛ
 
 ## Installation
 
-You can install the development version of xlsxread from [GitHub](https://github.com/) with:
+You can install the development version of `xlsxread::` from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("pak")
@@ -43,7 +43,8 @@ Import a sheet from a .xlsx file online :
 
 ```{r example}
 
-datas <- xlsxread::readxlsx(url = "https://go.microsoft.com/fwlink/?LinkID=521962", sheet = 1)
+datas <- xlsxread::readxlsx(url = "https://go.microsoft.com/fwlink/?LinkID=521962"
+                            , sheet = 1, row1_is_colnames = TRUE)
 
 str(datas)
 ```
