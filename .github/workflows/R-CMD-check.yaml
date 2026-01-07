@@ -16,7 +16,15 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v2
 
       - name: Install dependencies
-        run: Rscript -e 'install.packages(c("devtools","remotes","testthat","roxygen2"))'
+        run: Rscript -e 'install.packages(c("devtools","covr","testthat"))'
+
+      - name: Run tests with coverage
+        run: Rscript -e 'cov <- covr::package_coverage(); covr::report(cov)'
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+        token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Check package
         run: R CMD check .
