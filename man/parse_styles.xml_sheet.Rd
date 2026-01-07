@@ -18,6 +18,8 @@ parse_styles.xml_sheet(styles_raw)
 Parse styles.xls sheet from an .xlsx Workbook into a data.frame
 }
 \examples{
+\dontrun{
  parse_styles.xml_sheet(styles_raw = read_xlsx_sheet_raw_content(
  url = "https://go.microsoft.com/fwlink/?LinkID=521962")$styles)
+ }
 }

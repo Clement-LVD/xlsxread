@@ -4,7 +4,7 @@
 \alias{readxlsx}
 \title{Read a sheet from an .xlsx file (local filepath or url)}
 \usage{
-readxlsx(filepath = NULL, url = NULL, sheet = 1, row1_si_colnames = F, ...)
+readxlsx(filepath = NULL, url = NULL, sheet = 1, row1_is_colnames = F, ...)
 }
 \arguments{
 \item{filepath}{\code{character} - Local path to the .xlsx file to read}
@@ -13,7 +13,7 @@ readxlsx(filepath = NULL, url = NULL, sheet = 1, row1_si_colnames = F, ...)
 
 \item{sheet}{\code{numeric} - Number of the sheet to extract, default = 1}
 
-\item{row1_si_colnames}{\code{logical} - Use the first row values as colnames if \code{TRUE}. Default is \code{FALSE}.}
+\item{row1_is_colnames}{\code{logical} - Use the first row values as colnames if \code{TRUE}. Default is \code{FALSE}.}
 
 \item{...}{\itemize{
 \item Parameters passed to \code{utils::download.file()}
@@ -23,6 +23,6 @@ readxlsx(filepath = NULL, url = NULL, sheet = 1, row1_si_colnames = F, ...)
 Read a single sheet from a .xlsx and guess the correct style (e.g., \code{Date}, \code{numeric} values)
 }
 \examples{
-datas <- readxlsx(url = "https://go.microsoft.com/fwlink/?LinkID=521962")
+datas <- readxlsx(url = "https://go.microsoft.com/fwlink/?LinkID=521962",  row1_is_colnames = TRUE)
 str(datas)
 }

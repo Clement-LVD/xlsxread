@@ -2,9 +2,10 @@
 #' @param styles_raw `character` - The style raw text content as returned by `read_xlsx_sheet_raw_content()`
 #' @returns - Return a `data.frame` with 2 columns : `numFmtId` and `styles_index`
 #' @examples
+#' \dontrun{
 #'  parse_styles.xml_sheet(styles_raw = read_xlsx_sheet_raw_content(
 #'  url = "https://go.microsoft.com/fwlink/?LinkID=521962")$styles)
-#' @export
+#'  }
 parse_styles.xml_sheet <- function(styles_raw){
 
     if (length(styles_raw) > 1L) {

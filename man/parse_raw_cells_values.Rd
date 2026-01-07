@@ -4,7 +4,7 @@
 \alias{parse_raw_cells_values}
 \title{Get all the cells values (raws) before to turn it into a matrix}
 \usage{
-parse_raw_cells_values(sheet_text)
+parse_raw_cells_values(sheet_text = NULL)
 }
 \arguments{
 \item{sheet_text}{\code{character} - The complete raw sheet text (e.g., from 'sheet1.xls')}

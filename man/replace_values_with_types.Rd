@@ -4,10 +4,10 @@
 \alias{replace_values_with_types}
 \title{Permute values in a 'raw_value' column of a df, according to another dictionnary df}
 \usage{
-replace_values_with_types(raw_cells_df, sharedstrings_df, styles_df)
+replace_values_with_types(cells_df, sharedstrings_df, styles_df)
 }
 \arguments{
-\item{raw_cells_df}{\code{data.frame} - The raw content data.frame provided by parse_raw_cells_values(). Must contain 'types', 'raw_content' and 'raw_value' columns.}
+\item{cells_df}{\code{data.frame} - The raw content data.frame provided by parse_raw_cells_values(). Must contain 'types', 'raw_content' and 'raw_value' columns.}
 
 \item{sharedstrings_df}{\code{data.frame} - The content data.frame provided by parse_sharedstrings(). Must contain 'value' and 'index_excel' columns}
 
@@ -15,7 +15,7 @@ replace_values_with_types(raw_cells_df, sharedstrings_df, styles_df)
 }
 \value{
 \itemize{
-\item Return a \code{data.frame} similar to the one passed by the user (\code{raw_cells_df} parameter), but the column 'raw_content' contain the 'good' values, according to the sharedstyle \code{data.frame} (\code{sharedstrings_df} parameter)
+\item Return a \code{data.frame} similar to the one passed by the user (\code{cells_df} parameter), but the column 'raw_content' contain the 'good' values, according to the sharedstyle \code{data.frame} (\code{sharedstrings_df} parameter)
 }
 }
 \description{
