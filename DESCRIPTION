@@ -2,8 +2,7 @@ Package: xlsxread
 Title: Read .xlsx Files
 Version: 0.0.1
 Authors@R: 
-    person("Clément", "Laverdet", , "clementlvd@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0003-4466-3394"))
+    person(given = "Clément", family = "Laverdet",  email = "clementlvd@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-4466-3394"))
 Description: Read .xlsx files within base R, with minimal dependancies.
 License: MIT + file LICENSE
 Imports: utils
