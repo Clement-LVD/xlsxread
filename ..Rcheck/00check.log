@@ -1,0 +1,14 @@
+* using log directory 'C:/Users/CLEM/Documents/PROJETS_EN_R/xlsxread/..Rcheck'
+* using R version 4.4.3 (2025-02-28 ucrt)
+* using platform: x86_64-w64-mingw32
+* R was compiled by
+    gcc.exe (GCC) 13.3.0
+    GNU Fortran (GCC) 13.3.0
+* running under: Windows 11 x64 (build 26100)
+* using session charset: UTF-8
+* using option '--as-cran'
+* checking for file './DESCRIPTION' ... ERROR
+Champs requis mais manquants ou vides :
+  'Author' 'Maintainer'
+* DONE
+Status: 1 ERROR
