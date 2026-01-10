@@ -4,7 +4,14 @@
 \alias{readxlsx}
 \title{Read a sheet from an .xlsx file (local filepath or url)}
 \usage{
-readxlsx(filepath = NULL, url = NULL, sheet = 1, row1_is_colnames = F, ...)
+readxlsx(
+  filepath = NULL,
+  url = NULL,
+  sheet = 1,
+  remove_first_row_as_header = F,
+  skip_rows = NULL,
+  ...
+)
 }
 \arguments{
 \item{filepath}{\code{character} - Local path to the .xlsx file to read}
@@ -13,7 +20,9 @@ readxlsx(filepath = NULL, url = NULL, sheet = 1, row1_is_colnames = F, ...)
 
 \item{sheet}{\code{numeric} - Number of the sheet to extract, default = 1}
 
-\item{row1_is_colnames}{\code{logical} - Use the first row values as colnames if \code{TRUE}. Default is \code{FALSE}.}
+\item{remove_first_row_as_header}{\code{logical} - Use the first row values as colnames if \code{TRUE}. Default is \code{FALSE}}
+
+\item{skip_rows}{\code{numeric} - Skip first rows of the datas, \emph{before} to consider the first row of this filtered dataset as a header (if \code{remove_first_row_as_header} is \code{TRUE})}
 
 \item{...}{\itemize{
 \item Parameters passed to \code{utils::download.file()}
@@ -23,6 +32,7 @@ readxlsx(filepath = NULL, url = NULL, sheet = 1, row1_is_colnames = F, ...)
 Read a single sheet from a .xlsx and guess the correct style (e.g., \code{Date}, \code{numeric} values)
 }
 \examples{
-datas <- readxlsx(url = "https://go.microsoft.com/fwlink/?LinkID=521962",  row1_is_colnames = TRUE)
+datas <- readxlsx(url = "https://go.microsoft.com/fwlink/?LinkID=521962"
+                ,  remove_first_row_as_header = TRUE)
 str(datas)
 }

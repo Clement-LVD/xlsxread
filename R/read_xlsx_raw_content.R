@@ -5,14 +5,16 @@
 #' @param url `character` - url to a .xlsx file to read (link with no waiting page only)
 #' @param ... - Parameters passed to `utils::download.file()`
 #' @examples
+#' \dontrun{
 #' content <-  read_xlsx_raw_content(url = "https://go.microsoft.com/fwlink/?LinkID=521962")
 #' str(content)
+#' }
+#'
 #' @return `list` - Return the raw .xml content (unparsed) for several entries within the "xl/" subfolder :
 #'   - `sheet` - raw data for one of the sheet, default is the first sheet (i.e. "xl/sheet1.xml"). This entry already offers the numeric values but the others values are a sharedStrings-index numeric value (the next `'sharedstrings'` entry of the `list` of results is the mapping file)
 #'   - `sharedstrings` - sharedStrings.xml raw data (mapping file for characters and special values)
 #'   - `workbook` - workbook.xml raw data (overall informations)
 #'   - `styles` - styles.xml raw data
-#' @export
 read_xlsx_raw_content <- function(file = NULL, sheet = 1, url = NULL, ...){
 
   if(is.null(file) & is.null(url)) {

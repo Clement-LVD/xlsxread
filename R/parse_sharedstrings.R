@@ -2,7 +2,7 @@
 #'
 #' sharedstrings.xml  is a dictionnary with the values within the .xlsx sheet
 #' @param text `character` - The raw text content of a sharedstrings.xml file
-#' @returns Return a `data.frame` with 3 columns :
+#' @returns Return a `character` value : the first entry returned is the first sharedstrings entry (entry 0).
 #'
 #'  - `index_excel` for the Excel '0-first' index (line-number - 1)
 #'  - `index_R` for the '1-first' index, as the main line numbering method within R
@@ -10,70 +10,30 @@
 #' @examples
 #' \dontrun{
 #' content <- read_xlsx_raw_content(url = "https://go.microsoft.com/fwlink/?LinkID=521962")
-#' parse_sharedstrings(text = content$sharedstrings)
+#' shared_values <- parse_sharedstrings(text = content$sharedstrings)
+#'
+#' content <- read_xlsx_raw_content(url = "https://go.microsoft.com/fwlink/?LinkID=521962")
+#' shared_values <- parse_sharedstrings(text = content$sharedstrings)
 #' }
 #'
 #
 parse_sharedstrings <- function(text) {
   if(length(text) > 1) text <- paste0(text, collapse = " ")
 
-  text <- paste(text, collapse = "\n")  # << important
+  # text <- paste(text, collapse = "\n")
   si_nodes <- xml_extract(text, "<si[\\s\\S]*?</si>")
+  if (!length(si_nodes)) return(character(0))
 
-  strings <- vapply(si_nodes, function(si) {
-    #capture between <t> ... </t>
-    t_nodes <- xml_extract(si, "<t[^>]*>([\\s\\S]*?)</t>")
-    # remove <t> and </t>
-    t_nodes <- gsub("^<t[^>]*>|</t>$", "", t_nodes)
- # force colapsing if several texts
-    t <- paste0(t_nodes, collapse = "")
+  # 2. Remove any XML tags (<r>, etc.)
+  strings <- gsub("<[^>]+>", "", si_nodes)
 
-    # replace some encoding troubles
-    t <- gsub("&amp;", "&", t)
-    t <- gsub("&lt;", "<", t)
-    t <- gsub("&gt;", ">", t)
-    t
-  }, character(1))
+  # 5. Decode minimal XML entities (Excel scope)
+  strings <- gsub("&amp;", "&", strings, fixed = TRUE)
+  strings <- gsub("&lt;", "<", strings, fixed = TRUE)
+  strings <- gsub("&gt;", ">", strings, fixed = TRUE)
+  strings <- gsub("&quot;", "\"", strings, fixed = TRUE)
+  strings <- gsub("&apos;", "'", strings, fixed = TRUE)
 
-  data.frame(
-    index_excel = seq_along(strings) - 1,
-    index_R     = seq_along(strings),
-    value       = strings,
-    stringsAsFactors = FALSE
-  )
+  return( strings  )
 }
 
-# legacy version
-# parse_sharedstrings <- function(text) {
-#
-#   if(length(text) > 1) text <- paste0(text, collapse = " ")
-#   # extract between <si>...</si>
-#   matches <- xml_extract(text, "<si[\\s\\S]*?</si>")
-#
-#   # Construct <t> dictionnary from a sharedstrings .xml file (rich text)
-#   strings <- vapply(matches, function(match) {
-#     # extract all <t> nodes
-#     nodes <- xml_extract(match, "<t[^>]*>([\\s\\S]*?)</t>")
-#
-#     # remove <t> tags if present
-#     nodes <- gsub("^<t[^>]*>|</t>$", "", nodes)
-#
-#     # concatenate all <t> nodes into one string
-#     paste0(nodes, collapse = "")
-#   }, character(1))
-#
-#   strings <- trimws(strings)
-#
-#   # replace char
-#   strings <- gsub(x = strings, pattern = "&amp;", replacement = "&")
-#
-#   sharedstrings_df <- data.frame(
-#     index_excel = seq_along(strings) - 1,  # Excel 0-based
-#     index_R     = seq_along(strings),      # R 1-based
-#     value       = strings,
-#     stringsAsFactors = FALSE
-#   )
-#
-#   return( sharedstrings_df )
-#
-# }

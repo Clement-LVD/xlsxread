@@ -10,7 +10,7 @@ parse_sharedstrings(text)
 \item{text}{\code{character} - The raw text content of a sharedstrings.xml file}
 }
 \value{
-Return a \code{data.frame} with 3 columns :
+Return a \code{character} value : the first entry returned is the first sharedstrings entry (entry 0).
 \itemize{
 \item \code{index_excel} for the Excel '0-first' index (line-number - 1)
 \item \code{index_R} for the '1-first' index, as the main line numbering method within R
@@ -23,7 +23,10 @@ sharedstrings.xml  is a dictionnary with the values within the .xlsx sheet
 \examples{
 \dontrun{
 content <- read_xlsx_raw_content(url = "https://go.microsoft.com/fwlink/?LinkID=521962")
-parse_sharedstrings(text = content$sharedstrings)
+shared_values <- parse_sharedstrings(text = content$sharedstrings)
+
+content <- read_xlsx_raw_content(url = "https://go.microsoft.com/fwlink/?LinkID=521962")
+shared_values <- parse_sharedstrings(text = content$sharedstrings)
 }
 
 }

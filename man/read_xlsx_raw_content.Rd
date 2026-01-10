@@ -30,6 +30,9 @@ read_xlsx_raw_content(file = NULL, sheet = 1, url = NULL, ...)
 Read .xml files from - unzipped - .xlsx and return raw content
 }
 \examples{
+\dontrun{
 content <-  read_xlsx_raw_content(url = "https://go.microsoft.com/fwlink/?LinkID=521962")
 str(content)
+}
+
 }

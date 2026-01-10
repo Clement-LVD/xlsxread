@@ -22,11 +22,13 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/Clement-LVD/xlsxread/graph/badge.svg)](https://app.codecov.io/gh/Clement-LVD/xlsxread)
 <!-- badges: end -->
 
-`xlsxread::` is an R package. The goal of `xlsxread::` is to import an Excel .xlsx sheet within the R environnement with `xlsxread::readxlsx()`.
+`xlsxread::` is an R package. The goal of `xlsxread::` is to import an Excel .xlsx sheet within the R environnement with `xlsxread::readxlsx()`. 
 
-> - 🌍 Read .xlsx file from an URL or a file path 🌍
-> - 🚀 Maximal performance for quick reading 🚀
-> - ℛ `base::` R with no dependencies ℛ
+> Dependencies are kept as low as possible and quick reading is expected.
+
+> - 🌍 Read .xlsx file from an URL or a file path 
+> - 🚀 Maximal performance for quick reading 
+> - ℛ `base::` R with no dependencies 
 
 ## Installation
 
@@ -37,19 +39,27 @@ You can install the development version of `xlsxread::` from [GitHub](https://gi
 pak::pak("Clement-LVD/xlsxread")
 ```
 
-## Example
+## Examples
 
-Import a sheet from a .xlsx file online :
+Import a sheet from .xlsx file with ` xlsxread::readxlsx()`
+
+- online :
 
 ```{r example}
 
 datas <- xlsxread::readxlsx(url = "https://go.microsoft.com/fwlink/?LinkID=521962"
-                            , sheet = 1, row1_is_colnames = TRUE)
+                            , sheet = 1, remove_first_row_as_header = TRUE)
 
 str(datas)
+
+student <- xlsxread::readxlsx(url = "https://www.exceldemy.com/wp-content/uploads/2023/12/Project-Management-Sample-Data.xlsx"
+                              , skip_rows = 1:4, remove_first_row_as_header = TRUE)
+
+str(student)
+
 ```
 
-Or import from a local file path :
+- from a local file :
 
 ```{r example2}
 

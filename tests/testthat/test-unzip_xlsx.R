@@ -1,6 +1,6 @@
 test_that("unzip_xlsx works", {
 
-  content <- unzip_xlsx(url = "https://go.microsoft.com/fwlink/?LinkID=521962")
+  content <- unzip_xlsx(url = "https://go.microsoft.com/fwlink/?LinkID=521962", quiet = T)
 
   files <- list.files(content, recursive = T)
 

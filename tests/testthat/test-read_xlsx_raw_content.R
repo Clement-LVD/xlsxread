@@ -1,5 +1,5 @@
   test_that("read_xlsx_raw_content FETCH DATA", {
-  content <-  read_xlsx_raw_content(url = "https://go.microsoft.com/fwlink/?LinkID=521962")
+  content <-  read_xlsx_raw_content(url = "https://go.microsoft.com/fwlink/?LinkID=521962", quiet = T)
 
   testthat::expect_equal(length(content), 4)
   testthat::expect_true( all(c("sheet", "sharedstrings", "workbook", "styles") %in% names(content) ))
@@ -11,7 +11,7 @@
 
   test_that("read_xlsx_raw_content raise error and warning", {
 
-    testthat::expect_warning( testthat::expect_error(read_xlsx_raw_content(url = "fake_url")) )
+    testthat::expect_warning( testthat::expect_error(read_xlsx_raw_content(url = "fake_url", quiet = T)) )
 
   testthat::expect_warning( empty <- read_xlsx_raw_content()  )
 
