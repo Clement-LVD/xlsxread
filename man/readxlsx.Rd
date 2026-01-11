@@ -25,7 +25,7 @@ readxlsx(
 \item{skip_rows}{\code{numeric} - Skip first rows of the datas, \emph{before} to consider the first row of this filtered dataset as a header (if \code{remove_first_row_as_header} is \code{TRUE})}
 
 \item{...}{\itemize{
-\item Parameters passed to \code{utils::download.file()}
+\item Parameters passed to \code{utils::download.file()} if needed for the download (only used when the user provide the \code{url} parameter)
 }}
 }
 \description{

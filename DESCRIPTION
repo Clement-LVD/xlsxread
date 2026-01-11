@@ -2,7 +2,7 @@ Package: xlsxread
 Title: Read .xlsx Files
 Version: 0.1.2
 Description: Read .xlsx files within base R.
-License: MIT + file LICENSE
+License: CC0
 Imports: utils
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
