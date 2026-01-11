@@ -10,7 +10,7 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/xlsxread)](https://CRAN.R-project.org/package=xlsxread)
 [![License:
-MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+CC0](https://img.shields.io/badge/License-CC0-lightgrey)](https://creativecommons.org/publicdomain/zero/1.0/)
 [![R build
 status](https://github.com/Clement-LVD/xlsxread/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Clement-LVD/xlsxread/actions)
 [![codecov](https://codecov.io/gh/Clement-LVD/xlsxread/branch/main/graph/badge.svg?token=ZTMHT15VXP)](https://codecov.io/gh/Clement-LVD/xlsxread)
