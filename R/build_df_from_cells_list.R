@@ -52,7 +52,7 @@ build_df_from_cells_list <- function(cells_list, remove_first_row_as_header = TR
   if (remove_first_row_as_header) {
     header_row <- min(unlist(cells_list$row))
     tmp <- remove_header_row(cells_list, header_row = header_row)
-    header <- tmp$header
+    header <- trimws(tmp$header)
     cells_list <- tmp$cells_list
   } else {
     header <- NULL
