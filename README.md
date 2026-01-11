@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+![R](https://img.shields.io/badge/-package-steelblue?logo=r)
+[![version](https://img.shields.io/github/r-package/v/clement-LVD/xlsxread?label=Version)](https://github.com/clement-LVD/xlsxread)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/xlsxread)](https://CRAN.R-project.org/package=xlsxread)
 [![License:
