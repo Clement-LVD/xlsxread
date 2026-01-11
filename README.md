@@ -11,8 +11,7 @@ status](https://www.r-pkg.org/badges/version/xlsxread)](https://CRAN.R-project.o
 MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![R build
 status](https://github.com/Clement-LVD/xlsxread/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Clement-LVD/xlsxread/actions)
-[![Codecov test
-coverage](https://codecov.io/gh/Clement-LVD/xlsxread/graph/badge.svg)](https://app.codecov.io/gh/Clement-LVD/xlsxread)
+[![codecov](https://codecov.io/gh/Clement-LVD/xlsxread/branch/main/graph/badge.svg?token=ZTMHT15VXP)](https://codecov.io/gh/Clement-LVD/xlsxread)
 <!-- badges: end -->
 
 `xlsxread::` is an R package. The goal of `xlsxread::` is to import an
