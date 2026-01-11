@@ -16,16 +16,19 @@ status](https://github.com/Clement-LVD/xlsxread/actions/workflows/R-CMD-check.ya
 [![codecov](https://codecov.io/gh/Clement-LVD/xlsxread/branch/main/graph/badge.svg?token=ZTMHT15VXP)](https://codecov.io/gh/Clement-LVD/xlsxread)
 <!-- badges: end -->
 
-`xlsxread::` is an R package. The goal of `xlsxread::` is to import an
-Excel .xlsx sheet within the R environnement with
-`xlsxread::readxlsx()`.
+`xlsxread::` is an R package dedicated to import an Excel `.xlsx` sheet
+using `xlsxread::readxlsx()`.
 
-> Dependencies are kept as low as possible and quick reading is
-> expected.
+> `xlsxread::` provides a lightweight XML parser within base R.
 
-> - 🌍 Read .xlsx file from an URL or a file path
-> - 🚀 Maximal performance for quick reading
-> - ℛ `base::` R with no dependencies
+Features:
+
+- 🚀 *Quick reading* of `.xlsx` files
+  - 🌍 from a URL  
+  - 💾 or from a file path  
+- 𝄜 Import a `data.frame` within the R programming environment
+  - 📅 Types are inferred according to Excel `.xlsx` conventions, e.g.,
+    `Date`, `character`, and `numeric` values[^1]
 
 ## Installation
 
@@ -39,14 +42,14 @@ pak::pak("Clement-LVD/xlsxread")
 
 ## Examples
 
-Import a sheet from .xlsx file with `xlsxread::readxlsx()`
+Import a datasheet from .xlsx file with `xlsxread::readxlsx()`.
 
-- online :
+- Import from an URL :
 
 ``` r
 
 datas <- xlsxread::readxlsx(url = "https://go.microsoft.com/fwlink/?LinkID=521962"
-                            , sheet = 1, remove_first_row_as_header = TRUE)
+, sheet = 1, remove_first_row_as_header = TRUE)
 
 str(datas)
 #> 'data.frame':    700 obs. of  16 variables:
@@ -70,7 +73,7 @@ str(datas)
 #>  - attr(*, "sheet")= num 1
 
 student <- xlsxread::readxlsx(url = "https://www.exceldemy.com/wp-content/uploads/2023/12/Project-Management-Sample-Data.xlsx"
-                              , skip_rows = 1:4, remove_first_row_as_header = TRUE)
+, skip_rows = 1:4, remove_first_row_as_header = TRUE)
 
 str(student)
 #> 'data.frame':    46 obs. of  7 variables:
@@ -85,7 +88,7 @@ str(student)
 #>  - attr(*, "sheet")= num 1
 ```
 
-- from a local file :
+- Import from a local file :
 
 ``` r
 
@@ -93,3 +96,24 @@ datas <- xlsxread::readxlsx(filepath =  "C:/me/fake_datas.xlsx", sheet = 1)
 #> Warning in read_xlsx_raw_content(file = filepath, url = url, sheet = sheet, :
 #> The .xlsx file does not exist: C:/me/fake_datas.xlsx
 ```
+
+## Parameters
+
+Regarding `xlsxread::readxlsx()`,
+
+- Main parameters are :
+  - `filepath` or `url` : the local path or the url of to the .xlsx file
+  - `sheet` : the sheet to import (defaut to 1 for the first sheet of
+    the .xlsx)
+- Optional parameters are :
+  - `skip_rows` : first(s) row(s) to skip, e.g., `c(1,2,3)`. Default is
+    `NULL` (don’t skip rows).
+  - `remove_first_row_as_header` : use the first row cells values as
+    colnames. Default is `FALSE` (colnames will be ‘A’, ‘B’, ‘C’, etc.)
+  - If an `url` is provided, the user have the possibility to pass
+    (optionnal) parameters to `utils::download.file()` in order to
+    configure the download
+
+[^1]: Note that R `data.frame` handle a single type of value within a
+    column, i.e. a vector with several types is turned into a
+    `character` vector

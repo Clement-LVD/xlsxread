@@ -6,7 +6,7 @@
 #' @param sheet `numeric` - Number of the sheet to extract, default = 1
 #' @param remove_first_row_as_header `logical` - Use the first row values as colnames if `TRUE`. Default is `FALSE`
 #' @param skip_rows `numeric` - Skip first rows of the datas, *before* to consider the first row of this filtered dataset as a header (if `remove_first_row_as_header` is `TRUE`)
-#' @param ... - Parameters passed to `utils::download.file()`
+#' @param ... - Parameters passed to `utils::download.file()` if needed for the download (only used when the user provide the `url` parameter)
 #' @examples
 #' datas <- readxlsx(url = "https://go.microsoft.com/fwlink/?LinkID=521962"
 #'                 ,  remove_first_row_as_header = TRUE)
