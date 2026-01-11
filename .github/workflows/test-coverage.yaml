@@ -18,7 +18,7 @@ jobs:
       # install dependencies
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          dependencies: "Suggests"
+          dependencies: TRUE
           extra-packages: "covr"
 
       # run test and upload coverage
