@@ -8,4 +8,7 @@ test_that("unzip_xlsx works", {
                      , "xl/theme/theme1.xml"  , "xl/worksheets/sheet1.xml")
 
   testthat::expect_true(all(files_to_have %in% files) )
+
+testthat::expect_warning(  {content <- unzip_xlsx(path = NULL, quiet = T)} )
+testthat::expect_true(is.na(content))
 })
